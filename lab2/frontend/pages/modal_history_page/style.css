@@ -1,0 +1,25 @@
+.modal-history-container{
+    position: relative;
+    margin: 20% auto;
+    width: 500px;
+    height: 300px;
+
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 500; 
+    color: var(--main-text-color);
+
+    box-sizing: border-box;
+    border: 2px solid var(--history-border-color);
+    border-radius: 20px;
+    background-color: var(--history-background-color);
+}
+.modal-history-header{
+    margin: 10px;  
+    font-size: 20px;
+}
+.modal-history-text{
+    height: 240px;
+    margin: 0 6px;
+    font-size: 16px;
+    overflow-y: scroll;
+}

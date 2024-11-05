@@ -1,0 +1,59 @@
+.employee-page-header-name{
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 500;
+    font-size: 60px;
+    color: var(--main-text-color);
+
+    margin: 10px auto;
+}
+
+.sausages-page-exit-button-link{
+    color: var(--main-text-color);
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+.sausages-page-exit-button{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+
+    width: 160px;
+    height: 40 px;
+    background-color: var(--exit-button-background-color); 
+
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 500;
+    
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50px;
+}
+.employee-page-table{
+    width: 80%;
+    height: 60%;
+    border-collapse: collapse;
+
+    margin: 0 auto;
+}
+.employee-page-table tr{
+    color: var(--main-text-color);
+    font-family: Rubik Mono One, sans-serif;
+    font-weight: 400;
+    
+}
+.employee-page-table th{
+    height: 80px;
+    width: 25%;
+    font-size: 28px;
+    text-align: center;
+    border: 3px solid var(--main-text-color);
+    border-top: 3px solid var(--main-text-color);
+}
+.employee-page-table td{
+    font-size: 26px;
+
+}

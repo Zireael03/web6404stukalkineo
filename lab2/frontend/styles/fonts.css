@@ -1,0 +1,12 @@
+@font-face{
+    font-family: "Comfortaa";
+    font-style: normal;
+    font-weight: 500;
+    src: url(../fonts/Comfortaa-Medium.ttf) format("truetype");
+}
+@font-face{
+    font-family: "RubikWetPaint";
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/RubikWetPaint-Regular.ttf) format("truetype");
+}
