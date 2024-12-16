@@ -1,0 +1,9 @@
+:root{
+    --main-background-color: rgb(40, 25, 80);
+    --main-text-color: antiquewhite;
+    --sausage-inactive-color: rgba(0, 0, 0, 0.1);
+    --sausage-active-color: rgba(98, 45, 243, 0.2);
+    --history-background-color: rgb(21, 63, 3);
+    --history-border-color: rgb(129, 25, 181);
+    --exit-button-background-color: rgb(8, 107, 165);
+}
