@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+
+    <link rel ="stylesheet" href ="style.css">
+    <link rel="stylesheet" href = "../../styles/colors.css">
+    <link rel = "stylesheet" href = "../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/reset.css">
+    <link rel="stylesheet" href="../../styles/fonts.css">
+    <script>
+        async function handleAddButtonClick() {
+            try {
+               
+                const nameInput = document.getElementById('itemName');
+                const priceInput = document.getElementById('itemPrice');
+                const fileInput = document.getElementById('itemImage');
+                const itemName = nameInput.value.trim();
+                const itemPrice = priceInput.value.trim();
+                const imageFile = fileInput.files[0];
+
+                
+                if (!itemName) {
+                    alert('Название не может быть пустым.');
+                    nameInput.focus();
+                    return;
+                }
+
+                const priceValue = parseFloat(itemPrice);
+                if (isNaN(priceValue) || priceValue <= 0) {
+                    alert('Цена должна быть положительным числом.');
+                    priceInput.focus();
+                    return;
+                }
+
+                if (!imageFile) {
+                    alert('Пожалуйста, добавьте изображение.');
+                    fileInput.focus();
+                    return;
+                }
+                
+                
+                await sendItemData(itemName, priceValue, imageFile);
+
+                
+                location.href = '../sausages_page/index.html';
+            } catch (error) {
+                alert('Произошла ошибка при добавлении элемента. Пожалуйста, попробуйте снова.');
+            }
+        }
+    </script>
+    <script>
+        async function sendItemData(itemName, itemPrice, imageFile) {
+            try {
+                
+                const formData = new FormData();
+                formData.append('name', itemName); 
+                formData.append('price', itemPrice); 
+                formData.append('image', imageFile); 
+                
+                
+                console.log("data_send")
+                
+                
+                const response = await fetch('http://localhost:3000/api/items', {
+                    method: 'POST',
+                    body: formData,
+                });
+                
+                
+                if (!response.ok) {
+                    throw new Error(`Ошибка: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                console.log('Успех:');
+                return result;
+            } catch (error) {
+                console.error('Ошибка при отправке данных:', error);
+                throw error;
+            }
+        }
+    </script>
+    <title>Add sausages page</title>
+</head>
+<body>
+
+    <div class="main-container">
+
+        <div class="add-sausage-container">
+
+            <div class="add-sausage-inputs-container">
+              
+                <div class="add-sausage-input"> <input id="itemName" placeholder="Название"> </div>
+                <div class="add-sausage-input"> <input id="itemPrice" placeholder="Цена"> </div>
+                <div class="add-sausege-file"> <input id="itemImage" type="file"> </div>
+            
+            </div>
+            
+            <button type="button" class="add-sausage-button" onclick="handleAddButtonClick()">Добавить</button>
+        
+        </div>
+          
+
+    </div>
+
+</body>

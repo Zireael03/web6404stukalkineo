@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+
+    <link rel ="stylesheet" href ="style.css">
+    <link rel="stylesheet" href = "../../styles/colors.css">
+    <link rel = "stylesheet" href = "../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/reset.css">
+    <link rel="stylesheet" href="../../styles/fonts.css">
+
+    <script>
+        async function fetchItems() {
+            try {
+                const response = await fetch('http://localhost:3000/api/employees', {
+                    method: 'GET',
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Ошибка сервера: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                
+                populateTable(data.items);
+            } catch (error) {
+                console.error('Ошибка при запросе данных:', error);
+                alert('Не удалось загрузить данные. Попробуйте позже.');
+            }
+        }
+    </script>
+
+    <script>
+        function populateTable(items) {
+            const table = document.getElementById('items-table-body');
+
+            // Можно сделать удаление всех старых строк по необходимости
+            // const rows = table.querySelectorAll('tr:not(:first-child)');
+            // rows.forEach(row => row.remove());
+            
+           
+            items.forEach(item => {
+                const row = document.createElement('tr');
+
+                const nameCell = document.createElement('th');
+                nameCell.textContent = item.name;
+
+                const specializationCell = document.createElement('th');
+                specializationCell.textContent = item.specialization; 
+
+                const scheduleCell = document.createElement('th');
+                scheduleCell.textContent = item.schedule; 
+
+                const favoriteSausageCell = document.createElement('th');
+                favoriteSausageCell.textContent = item.favourite; 
+
+                row.appendChild(nameCell);
+                row.appendChild(specializationCell);
+                row.appendChild(scheduleCell);
+                row.appendChild(favoriteSausageCell);
+
+                table.appendChild(row);
+            });
+        }
+    </script>
+
+    <title>Main page</title>
+</head>
+<body>
+    
+    <div class="main-container">
+
+        <header>
+            <p class="employee-page-header-name">Великие колбасёры</p>
+        </header>
+
+
+        <div class="sausages-page-exit-button">
+            <a href="../main_page/index.html" class="sausages-page-exit-button-link">НА ГЛАВНУЮ</a>
+        </div>
+        
+        <table class="employee-page-table" id="items-table-body">
+            <tr>
+                <th>Имя</th>
+                <th>Специализация</th>
+                <th>График</th>
+                <th>Любимая колбаска</th>
+            </tr>
+            <tr>
+                <th>Галина Ивановна</th>
+                <th>Копчение</th>
+                <th>Понедельник, вторник</th>
+                <th>Шоколадная</th>
+            </tr>
+            <tr>
+                <th>Зульфия Аркеровна</th>
+                <th>Варка</th>
+                <th>Четверг, пятница</th>
+                <th>Варёная</th>
+            </tr>
+            <tr>
+                <th>Игорь Леонидович</th>
+                <th>Охота</th>
+                <th>Среда</th>
+                <th>Охотничья</th>
+            </tr>
+            <tr>
+                <th>Владимир Игуменович</th>
+                <th>Копчение</th>
+                <th>Понедельник, четверг</th>
+                <th>Сырокопчёная</th>
+            </tr>
+
+        </table>
+
+        <button class="fetch-employee-button"  onclick="fetchItems()">Обновить данные</button>
+
+    </div>
+
+</body>

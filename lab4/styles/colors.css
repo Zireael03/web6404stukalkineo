@@ -1,0 +1,14 @@
+:root{
+    --main-background-color: rgb(40, 25, 80);
+    --main-text-color: antiquewhite;
+    --sausage-inactive-color: rgba(0, 0, 0, 0.1);
+    --sausage-active-color: rgba(98, 45, 243, 0.2);
+    --history-background-color: rgb(11, 11, 11);
+    --history-border-color: rgb(129, 25, 181);
+    --exit-button-background-color: rgb(8, 107, 165);
+    --add-sausage-container-background: rgb(182, 194, 123);
+    --add-sausage-borders: rgb(211, 116, 118);
+    --add-sausage-hover: rgb(0,0,0);
+    --add-sausage-text: rgb(45, 44, 44);
+    --add-sausage-input-background: rgb(255, 255, 255);
+}
